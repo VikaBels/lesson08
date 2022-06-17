@@ -1,6 +1,7 @@
 package com.example.lesson08;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnMultiply;
     private Button btnEqual;
     private Button btnClear;
+    private Button btnOk;
 
     private TextView txtViewResult;
     private TextView txtViewLine;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private int num2 = 0;
     private String operand;
     private boolean error;
+
 
     public void findViewById() {
         btnZero = findViewById(R.id.btnZero);
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnEqual = findViewById(R.id.btnEqual);
         btnClear = findViewById(R.id.btnClear);
+        btnOk = findViewById(R.id.btnOk);
 
         txtViewResult = findViewById(R.id.txtResult);
         txtViewLine = findViewById(R.id.txtLine);
@@ -80,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnEqual.setOnClickListener(allButton);
         btnClear.setOnClickListener(allButton);
+        btnOk.setOnClickListener(allButton);
     }
 
     public void selectedButton(Button selectedButton) {
@@ -123,13 +128,13 @@ public class MainActivity extends AppCompatActivity {
             num2 = 0;
         }
 
-        if (selectedOperand.equals("")) {
+        if (selectedOperand.equals("=")) {
             txtViewResult.setText(error ? "ERROR" : String.valueOf(num1));
             number.setLength(0);
             num1 = 0;
 
         } else {
-            txtViewResult.setText("");
+            //txtViewResult.setText("");
             number.setLength(0);
 
             line.append(selectedButton.getText().toString().trim());
@@ -144,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById();
+
+        Intent goToInfo = new Intent(this, InfoActivity.class);
 
         View.OnClickListener allButton = new View.OnClickListener() {
             @SuppressLint("NonConstantResourceId")
@@ -208,14 +215,17 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.btnClear:
                         txtViewLine.setText("");
-                        txtViewResult.setText("");
+                        txtViewResult.setText("0");
                         line.setLength(0);
                         number.setLength(0);
                         break;
+                    case R.id.btnOk:
+                        startActivity(goToInfo);
+                        System.out.println("OK");
+                        break;
 
                     case R.id.btnEqual:
-                        workWithOperand("", btnEqual);
-
+                        workWithOperand("=", btnEqual);
                         break;
                 }
             }
@@ -244,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         btnMultiply = null;
         btnEqual = null;
         btnClear = null;
+        btnOk = null;
 
         txtViewResult = null;
         txtViewLine = null;

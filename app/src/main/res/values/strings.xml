@@ -16,5 +16,10 @@
     <string name="nine">9</string>
     <string name="divide">/</string>
     <string name="clear">c</string>
-    <string name="error">ERROR</string>>
+    <string name="error">ERROR</string>
+    <string name="OK">OK</string>
+    <string name="txtSavedDigits">Сохранённые значения:</string>
+    <string name="txtCurrentDigit">Текущее значение:</string>
+    <string name="Save">Сохранить</string>
+    <string name="Calculator">Калькулятор</string>>
 </resources>
