@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CalculatorActivity">
 
     <Button
         android:id="@+id/btnZero"
@@ -188,7 +188,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnDivide"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnNine"
-        app:layout_constraintTop_toBottomOf="@id/btnOk"/>
+        app:layout_constraintTop_toBottomOf="@id/btnOk" />
 
     <Button
         android:id="@+id/btnOk"

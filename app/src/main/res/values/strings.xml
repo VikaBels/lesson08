@@ -21,5 +21,7 @@
     <string name="txtSavedDigits">Сохранённые значения:</string>
     <string name="txtCurrentDigit">Текущее значение:</string>
     <string name="Save">Сохранить</string>
-    <string name="Calculator">Калькулятор</string>>
+    <string name="Calculator">Калькулятор</string>
+    <string name="noDigits">Значений пока нет</string>
+    <string name="noDigit">Нет значения</string>>
 </resources>
