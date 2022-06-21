@@ -173,13 +173,6 @@ public class CalculatorActivity extends AppCompatActivity {
 
         findViewById();
 
-        int width=getResources().getDisplayMetrics().widthPixels/4;
-        int hei=getResources().getDisplayMetrics().widthPixels/2;
-
-        //txtViewResult.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
-        //btnClear.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
-        //btnOk.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
-
         View.OnClickListener allButton = new View.OnClickListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
@@ -242,9 +235,7 @@ public class CalculatorActivity extends AppCompatActivity {
                         break;
 
                     case R.id.btnClear:
-                        //txtViewLine.setText("");
                         txtViewResult.setText("0");
-                        //line.setLength(0);
                         number.setLength(0);
                         clearVariables();
                         break;
