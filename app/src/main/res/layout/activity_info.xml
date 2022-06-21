@@ -8,29 +8,21 @@
 
     <TextView
         android:id="@+id/txtSavedDigit"
+        style="@style/StyleForTextViewInfoTxtDigits"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
         android:text="@string/txtSavedDigits"
+        app:layout_constraintBottom_toTopOf="@id/allDigit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/allDigit" />
-
-    <!--android:hint="Значений пока нет"-->
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/allDigit"
+        style="@style/StyleForTextViewInfoDigits"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginVertical="5dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:maxLines="5"
-        android:scrollbars="vertical"
         android:hint="@string/noDigits"
         app:layout_constraintBottom_toTopOf="@+id/txtCurrentDigit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,23 +31,20 @@
 
     <TextView
         android:id="@+id/txtCurrentDigit"
+        style="@style/StyleForTextViewInfoTxtDigit"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
         android:text="@string/txtCurrentDigit"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allDigit"
-        app:layout_constraintBottom_toTopOf="@+id/btnSave" />
+        app:layout_constraintTop_toBottomOf="@+id/allDigit" />
 
     <TextView
         android:id="@+id/currentDigit"
+        style="@style/StyleForTextViewInfoDigit"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
-        android:textSize="20sp"
         android:hint="@string/noDigit"
         app:layout_constraintBottom_toTopOf="@+id/btnCalculator"
         app:layout_constraintEnd_toStartOf="@id/btnSave"
@@ -77,12 +66,12 @@
         android:id="@+id/btnCalculator"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/Calculator"
-        app:layout_constraintTop_toBottomOf="@+id/btnSave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

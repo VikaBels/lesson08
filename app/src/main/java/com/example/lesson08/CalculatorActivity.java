@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,6 @@ public class CalculatorActivity extends AppCompatActivity {
     private Button btnOk;
 
     private TextView txtViewResult;
-    private TextView txtViewLine;
 
     private final StringBuilder line = new StringBuilder();
     private final StringBuilder number = new StringBuilder();
@@ -46,6 +46,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private String helpOperand;
     private int helpInt;
+    private int helperSum;
 
     public void findViewById() {
         btnZero = findViewById(R.id.btnZero);
@@ -69,7 +70,6 @@ public class CalculatorActivity extends AppCompatActivity {
         btnOk = findViewById(R.id.btnOk);
 
         txtViewResult = findViewById(R.id.txtResult);
-        txtViewLine = findViewById(R.id.txtLine);
     }
 
     public void setOnClickListener(View.OnClickListener allButton) {
@@ -102,14 +102,25 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void workWithOperand(String selectedOperand, Button selectedButton) {
+        if(selectedOperand.equals("=") && operand.equals("=")){
+            num1 = helperSum;
+            operand = helpOperand;
+        }
+
         if (num1 == 0) {
             num1 = Integer.parseInt(number.toString());
             operand = selectedOperand;
         } else if (num2 == 0) {
             try {
                 num2 = Integer.parseInt(number.toString());
+                helpInt = num2;
+                helpOperand = operand;
             } catch (Exception e) {
-                return;
+                if(helpInt==0){
+                    helpInt=num1;
+                    helpOperand = operand;
+                }
+                num2 = helpInt;
             }
 
             switch (operand) {
@@ -138,16 +149,21 @@ public class CalculatorActivity extends AppCompatActivity {
         if (selectedOperand.equals("=")) {
             txtViewResult.setText(error ? "ERROR" : String.valueOf(num1));
             number.setLength(0);
-            num1 = 0;
-
+            helperSum = num1;
+            //num1 = 0;
         } else {
-            //txtViewResult.setText("");
             number.setLength(0);
 
             line.append(selectedButton.getText().toString().trim());
         }
-        txtViewLine.setText(line);
+    }
 
+    public void clearVariables(){
+        operand = "";
+        num1 = 0;
+        helpInt = 0;
+        helperSum = 0;
+        helpOperand = "";
     }
 
     @Override
@@ -157,7 +173,12 @@ public class CalculatorActivity extends AppCompatActivity {
 
         findViewById();
 
-        Intent intent = new Intent();
+        int width=getResources().getDisplayMetrics().widthPixels/4;
+        int hei=getResources().getDisplayMetrics().widthPixels/2;
+
+        //txtViewResult.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
+        //btnClear.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
+        //btnOk.setLayoutParams(new RelativeLayout.LayoutParams(width,hei));
 
         View.OnClickListener allButton = new View.OnClickListener() {
             @SuppressLint("NonConstantResourceId")
@@ -221,13 +242,15 @@ public class CalculatorActivity extends AppCompatActivity {
                         break;
 
                     case R.id.btnClear:
-                        txtViewLine.setText("");
+                        //txtViewLine.setText("");
                         txtViewResult.setText("0");
-                        line.setLength(0);
+                        //line.setLength(0);
                         number.setLength(0);
+                        clearVariables();
                         break;
 
                     case R.id.btnOk:
+                        Intent intent = new Intent();
                         intent.putExtra("currentDigit", txtViewResult.getText().toString());
                         setResult(RESULT_OK, intent);
                         finish();
@@ -266,6 +289,5 @@ public class CalculatorActivity extends AppCompatActivity {
         btnOk = null;
 
         txtViewResult = null;
-        txtViewLine = null;
     }
 }

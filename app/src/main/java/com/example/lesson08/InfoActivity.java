@@ -39,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
 
     private String digit;
     private String refactorLine;
-    private final String txtNoDigit= "Вы не ввели число";
+    private final String txtNoDigit = "Вы не ввели число";
 
     public void findViewById() {
         allDigits = findViewById(R.id.allDigit);
@@ -57,6 +57,15 @@ public class InfoActivity extends AppCompatActivity {
         refactorLine = TextUtils.join("\n", listNumber);
 
         updateValues(refactorLine);
+    }
+
+    public void savePreviousList() {
+        if (listNumber.size() == 0) {
+            String[] txtNumbers = getValues().split("\n");
+            for (String num : txtNumbers) {
+                listNumber.add(Integer.parseInt(num));
+            }
+        }
     }
 
     public String getValues() {
@@ -103,6 +112,9 @@ public class InfoActivity extends AppCompatActivity {
 
         findViewById();
 
+        savePreviousList();
+
+        allDigits.setText(getValues());
 
         allDigits.setMovementMethod(new ScrollingMovementMethod());
 
