@@ -58,15 +58,20 @@ public class InfoActivity extends AppCompatActivity {
 
         updateValues(refactorLine);
     }
-
+    ////////////////
     public void savePreviousList() {
         if (listNumber.size() == 0) {
-            String[] txtNumbers = getValues().split("\n");
-            for (String num : txtNumbers) {
-                listNumber.add(Integer.parseInt(num));
+            try {
+                String[] txtNumbers = getValues().split("\n");
+                for (String num : txtNumbers) {
+                    listNumber.add(Integer.parseInt(num));
+                }
+            }catch (Exception e){
+                System.out.println(e);
             }
         }
     }
+
 
     public String getValues() {
         SharedPreferences sp = PreferenceManager

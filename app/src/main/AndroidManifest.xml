@@ -19,8 +19,7 @@
             android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".InfoActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -172,6 +172,8 @@
         style="@style/StyleForTextView"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:text=""
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/btnEight"
         app:layout_constraintEnd_toStartOf="@+id/btnClear"
         app:layout_constraintHorizontal_weight="3"
